@@ -1,0 +1,21 @@
+local my_co = coroutine.create(function(resume_value)
+  print('my_co',resume_value)
+  resume_value = coroutine.yield(1)
+  print('my_co',resume_value)
+  resume_value = coroutine.yield(2)
+  print('my_co',resume_value)
+  resume_value = coroutine.yield(3)
+  print('my_co',resume_value)
+  resume_value = coroutine.yield(4)
+  print('my_co',resume_value)
+  return 5
+end)
+
+print('script',coroutine.resume(my_co,1))
+print('script',coroutine.resume(my_co,'saraza'))
+print('script',coroutine.resume(my_co,true))
+print('script',coroutine.resume(my_co,{foo=bar}))
+print('script',coroutine.resume(my_co,'aaaa'))
+print('script',coroutine.resume(my_co,'bbbb'))
+
+print(type(my_co))
